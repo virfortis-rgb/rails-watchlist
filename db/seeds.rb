@@ -11,4 +11,16 @@
 require 'json'
 require 'open-uri'
 
-url =
+url = "https://tmdb.lewagon.com/movie/top_rated"
+movies_serialized = URI.parse(url).read
+movies = JSON.parse(movies_serialized)
+
+movies["results"].each do |m|
+  pp m["title"]
+  Movie.create(
+    title: m["title"],
+    overview: m["overview"],
+    poster_url: m["poster_path"],
+    rating: m["vote_average"]
+  )
+end

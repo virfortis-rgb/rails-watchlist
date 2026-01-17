@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'lists/index'
+  get 'lists/show'
+  get 'lists/new'
+  get 'lists/create'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -7,4 +11,16 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  root to: "lists#index"
+  resources :lists, only: [:index, :new, :show,  :create] do
+    resources :bookmarks, only: [:new, :create]
+  end
+  resources :bookmarks, only: [:destroy]
+
+
+  # get "lists", to: "lists#index"
+  # get "list/new", to: "lists#new", as: "new_list"
+  # post "lists", to: "lists#create"
+  # get"list/:id", to: "lists/show", as: "list"
 end

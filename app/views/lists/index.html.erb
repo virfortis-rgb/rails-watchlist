@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>Your Lists</h2>
+  <%= link_to "New List", new_list_path, class: "btn btn-primary" %>
+</div>
+<div class="container row m-3">
+  <% @lists.each do |l| %>
+    <div class="card col-4 m-2">
+      <%= l.name %>
+      <%= link_to 'See more...', list_path(l), class: "btn btn-secondary m-2" %>
+    </div>
+  <% end %>
+</div>

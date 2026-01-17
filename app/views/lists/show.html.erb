@@ -1,0 +1,21 @@
+<h2><%= @list.name %></h2>
+<div class="container mb-3">
+  <div>
+    <%= link_to 'Home', lists_path %>
+  </div>
+  <div class="container mb-1">
+    <p>Add a new bookmark: </p>
+    <% @list.bookmarks.each do |b| %>
+      <div class="card">
+        <p><%= b.movie.title %></p>
+        <%= link_to "Delete",
+          bookmark_path(b),
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?s"}
+        %>
+      </div>
+    <% end %>
+  </div>
+  <div class="card mb-3">
+    <%= render "bookmarks/form", list: @list, status: :created %>
+  </div>
+</div>
