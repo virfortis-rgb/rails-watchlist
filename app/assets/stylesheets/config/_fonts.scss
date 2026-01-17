@@ -1,16 +1,20 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jacquard+24&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet');
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+$body-font: "Space Grotesk";
+$headers-font: "Space Grotesk";
 
-// To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
+
+.jacquard-24-regular {
+  font-family: "Jacquard 24", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+// .space-grotesk-body{
+//   font-family: "Space Grotesk", sans-serif;
+//   font-optical-sizing: auto;
+//   font-weight: 400;
+//   font-style: normal;
 // }
-// $my-font: "Font Name";
