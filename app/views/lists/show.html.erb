@@ -1,31 +1,33 @@
 <div class="container bg-dark p-3 rounded-3">
   <h2><%= @list.name %></h2>
-  <div class="container mb-3">
-    <div class="container m-2">
-      <p>Add a new bookmark: </p>
+  <div>
+    <p class="p-2">Add a new bookmark: </p>
+    <div class="row justify-content-center gap-2">
       <% @list.bookmarks.each do |b| %>
-        <div class="card m-1">
-          <div>
-            <img src="<% b.movie.poster_url %>" alt="<%= b.movie.title %>">
-          </div>
-          <div>
-            <p class="m-2"><%= b.movie.title %></p>
-            <div class="m-2">
-              <%= b.movie.overview %>
+        <div class="card col-lg-3 col-md-4 col-sm-9 p-0 rounded-3">
+          <img
+                    src= <%= "#{@url}#{b.movie.poster_url}" %>
+                    alt= <%= b.movie.title %>
+                    class="m-0 rounded-3"
+              >
+            <div class="d-flex flex-column justify-content-between p-1">
+              <div class="m-2">
+                <p class="fs-5"><%= b.movie.title %></p>
+                <%= b.movie.overview %>
+              </div>
+              <div>
+                <%= link_to "Remove",
+                  bookmark_path(b),
+                  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+                  class: "btn btn-tertiary"
+                  %>
+              </div>
             </div>
-            <div>
-              <%= link_to "Remove",
-            bookmark_path(b),
-            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-            class: "btn btn-tertiary m-2"
-          %>
-            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
-    <div class="card mb-3">
+    <div class="card m-2">
       <%= render "bookmarks/form", list: @list, status: :created %>
     </div>
   </div>
-</div>

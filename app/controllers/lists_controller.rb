@@ -7,6 +7,7 @@ class ListsController < ApplicationController
 
   def show
     @bookmark = Bookmark.new
+    @url = "https://image.tmdb.org/t/p/w500/"
   end
 
   def new
