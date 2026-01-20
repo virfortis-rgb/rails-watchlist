@@ -1,21 +1,31 @@
-<h2><%= @list.name %></h2>
-<div class="container mb-3">
-  <div>
-    <%= link_to 'Home', lists_path, class: "btn btn-secondary" %>
-  </div>
-  <div class="container mb-1">
-    <p>Add a new bookmark: </p>
-    <% @list.bookmarks.each do |b| %>
-      <div class="card">
-        <p><%= b.movie.title %></p>
-        <%= link_to "Delete",
-          bookmark_path(b),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?s"}
-        %>
-      </div>
-    <% end %>
-  </div>
-  <div class="card mb-3">
-    <%= render "bookmarks/form", list: @list, status: :created %>
+<div class="container bg-dark p-3 rounded-3">
+  <h2><%= @list.name %></h2>
+  <div class="container mb-3">
+    <div class="container m-2">
+      <p>Add a new bookmark: </p>
+      <% @list.bookmarks.each do |b| %>
+        <div class="card m-1">
+          <div>
+            <img src="<% b.movie.poster_url %>" alt="<%= b.movie.title %>">
+          </div>
+          <div>
+            <p class="m-2"><%= b.movie.title %></p>
+            <div class="m-2">
+              <%= b.movie.overview %>
+            </div>
+            <div>
+              <%= link_to "Remove",
+            bookmark_path(b),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+            class: "btn btn-tertiary m-2"
+          %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="card mb-3">
+      <%= render "bookmarks/form", list: @list, status: :created %>
+    </div>
   </div>
 </div>
