@@ -1,8 +1,6 @@
 <div class="container bg-dark p-3 rounded-3">
   <h2 class="m-2">_your lists</h2>
-  <div>
-    <%= link_to "Add a new list", new_list_path, class: "btn btn-secondary m-3" %>
-  </div>
+  <%= link_to "Add a new list", new_list_path, class: "btn btn-secondary m-3" %>
   <div class="container row justify-content-between gap-1 w-100">
     <% @lists.each do |l| %>
       <div class="card col-3 rounded-2 text-bg-tertiary d-flex flex-column justify-content-between">
