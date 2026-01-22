@@ -8,7 +8,7 @@
       <div class="card col-3 rounded-2 text-bg-tertiary d-flex flex-column justify-content-between">
         <div>
           <% if l.picture.attached? %>
-            <%= cl_image_tag l.picture.key, width: 200, height: 200, crop: :fill %>
+            <%= cl_image_tag l.picture.key, width: 240, height: 200, crop: :auto %>
           <% else %>
             <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>
           <% end %>
