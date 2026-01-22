@@ -3,11 +3,15 @@
   <div>
     <%= link_to "Add a new list", new_list_path, class: "btn btn-secondary m-3" %>
   </div>
-  <div class="container row justify-content-between w-100">
+  <div class="container row justify-content-between gap-1 w-100">
     <% @lists.each do |l| %>
-      <div class="card col-3 m-2 rounded-2 text-bg-tertiary d-flex flex-column justify-content-between">
+      <div class="card col-3 rounded-2 text-bg-tertiary d-flex flex-column justify-content-between">
         <div>
-          <%= cl_image_tag l.picture.key , crop: :fill %>
+          <% if l.picture.attached? %>
+            <%= cl_image_tag l.picture.key, width: 200, height: 200, crop: :lfill %>
+          <% else %>
+            <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>
+          <% end %>
         </div>
         <div>
           <h4 class="my-3"><%= l.name %></h4>
